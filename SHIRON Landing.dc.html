@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/shiron-design-system-b79ab4ae-354a-404a-8c9f-f4a2e2e69022/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/shiron-design-system-b79ab4ae-354a-404a-8c9f-f4a2e2e69022/tokens/colors.css">
+<link rel="stylesheet" href="_ds/shiron-design-system-b79ab4ae-354a-404a-8c9f-f4a2e2e69022/tokens/typography.css">
+<link rel="stylesheet" href="_ds/shiron-design-system-b79ab4ae-354a-404a-8c9f-f4a2e2e69022/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/shiron-design-system-b79ab4ae-354a-404a-8c9f-f4a2e2e69022/tokens/surfaces.css">
+<link rel="stylesheet" href="_ds/shiron-design-system-b79ab4ae-354a-404a-8c9f-f4a2e2e69022/tokens/motion.css">
+<link rel="stylesheet" href="_ds/shiron-design-system-b79ab4ae-354a-404a-8c9f-f4a2e2e69022/tokens/base.css">
+<link rel="stylesheet" href="_ds/shiron-design-system-b79ab4ae-354a-404a-8c9f-f4a2e2e69022/styles.css">
+<script src="_ds/shiron-design-system-b79ab4ae-354a-404a-8c9f-f4a2e2e69022/_ds_bundle.js"></script>
+<style>
+body{margin:0;background:#0a0a0b;}
+a{color:#b8babd;text-decoration:none;border-bottom:none;}
+a:hover{color:#f2f2f0;}
+</style>
+</helmet>
+
+<div style="background:#0a0a0b;color:#f2f2f0;font-family:Karla,sans-serif;font-weight:300;">
+
+<div style="position:sticky;top:0;z-index:40;background:#0a0a0b;">
+<x-import component-from-global-scope="SHIRONDesignSystem_b79ab4.NavBar" items="{{ navItems }}" active="{{ activeNav }}" on-navigate="{{ goTo }}" on-cta="{{ goToContact }}" scrolled="{{ scrolled }}" cta="Записаться" hint-size="100%,72px"></x-import>
+</div>
+
+<section style="min-height:calc(100vh - 72px);display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(48px,6vw,88px) clamp(20px,4vw,32px) clamp(32px,4vw,56px);position:relative;overflow:hidden;">
+<img src="assets/hero-hall.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 60%;">
+<div style="position:absolute;inset:0;background-image:linear-gradient(180deg,rgba(10,10,11,.62) 0%,rgba(10,10,11,.12) 34%,rgba(10,10,11,0) 60%);pointer-events:none;"></div>
+<div style="position:absolute;inset:0;background-image:linear-gradient(105deg,rgba(242,242,240,0) 0%,rgba(242,242,240,.06) 42%,rgba(242,242,240,0) 68%);pointer-events:none;"></div>
+<div style="position:absolute;left:0;right:0;bottom:0;height:56%;background-image:linear-gradient(180deg,rgba(10,10,11,0) 0%,rgba(10,10,11,.28) 40%,rgba(10,10,11,.66) 78%,rgba(10,10,11,1) 100%);pointer-events:none;"></div>
+<div style="max-width:1360px;margin:0 auto;width:100%;position:relative;display:flex;flex-direction:column;flex:1;justify-content:space-between;gap:clamp(40px,6vw,72px);">
+<div style="display:flex;flex-direction:column;gap:clamp(16px,2vw,28px);width:100%;">
+<div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#b8babd;">Частная автомобильная студия</div>
+<h1 style="margin:0;font-family:Outfit,sans-serif;font-weight:200;font-size:clamp(44px,13.2vw,210px);line-height:.95;letter-spacing:.22em;text-transform:uppercase;color:#f2f2f0;white-space:nowrap;text-indent:.22em;text-align:center;">Shiron</h1>
+<div style="font-family:'JetBrains Mono',monospace;font-weight:400;font-size:14px;line-height:1.6;letter-spacing:.16em;text-transform:uppercase;color:#f2f2f0;text-align:center;">Студия восстановления и защиты автомобилей</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:24px;align-self:center;align-items:center;text-align:center;max-width:min(100%,560px);">
+<p style="margin:0;font-size:17px;line-height:1.7;color:#f2f2f0;max-width:46ch;text-wrap:pretty;">Детейлинг, восстановление и защита автомобилей премиального класса. Объём работ определяется состоянием автомобиля, а не пакетом услуг.</p>
+<div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;">
+<x-import component-from-global-scope="SHIRONDesignSystem_b79ab4.Button" size="lg" on-click="{{ goToContact }}" hint-size="auto,48px">Записаться в студию</x-import>
+<x-import component-from-global-scope="SHIRONDesignSystem_b79ab4.Button" variant="secondary" size="lg" on-click="{{ goToServices }}" hint-size="auto,48px">Посмотреть услуги</x-import>
+</div>
+</div>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:center;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#6e6f72;padding-top:20px;border-top:1px solid rgba(184,186,189,.14);">
+<span>Только по записи</span>
+<span style="display:flex;flex-wrap:wrap;gap:20px;">Porsche<span style="color:#3a3b3e;">·</span>BMW<span style="color:#3a3b3e;">·</span>Mercedes-Benz<span style="color:#3a3b3e;">·</span>Range Rover</span>
+</div>
+</div>
+</section>
+
+<section style="padding:clamp(40px,6vw,88px) clamp(20px,4vw,32px) clamp(64px,10vw,160px);">
+<div style="max-width:1360px;margin:0 auto;display:flex;flex-direction:column;gap:48px;">
+<x-import component-from-global-scope="SHIRONDesignSystem_b79ab4.StatBlock" items="{{ stats }}" hint-size="100%,180px"></x-import>
+</div>
+</section>
+
+<section style="padding:0 clamp(20px,4vw,32px) clamp(64px,10vw,160px);">
+<div style="max-width:1360px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(32px,5vw,80px);align-items:start;">
+<div style="border-top:1px solid rgba(184,186,189,.14);padding-top:24px;display:flex;flex-direction:column;gap:24px;">
+<div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#7c8a94;">03 / Философия</div>
+<h2 style="margin:0;font-family:Outfit,sans-serif;font-weight:300;font-size:clamp(32px,4.4vw,56px);line-height:1.1;letter-spacing:.005em;">Точность важнее скорости.</h2>
+</div>
+<div style="display:flex;flex-direction:column;gap:20px;padding-top:24px;">
+<p style="margin:0;font-size:17px;line-height:1.7;color:#b8babd;max-width:56ch;">SHIRON не работает по принципу потока. Автомобиль не встаёт в очередь — он проходит оценку состояния, и только после этого определяется объём работ.</p>
+<p style="margin:0;font-size:17px;line-height:1.7;color:#b8babd;max-width:56ch;">Мастера работают с поверхностью, материалами и деталями: кромки, стыки, зоны под уплотнителями, состояние кожи и оптики. Именно эти участки определяют, как автомобиль выглядит через год.</p>
+<div style="margin-top:12px;height:1px;background:linear-gradient(90deg,rgba(124,138,148,0) 0%,rgba(184,186,189,.45) 50%,rgba(124,138,148,0) 100%);"></div>
+<div style="font-family:Outfit,sans-serif;font-weight:300;font-size:24px;letter-spacing:.02em;color:#f2f2f0;">Меньше объёма. Больше внимания.</div>
+</div>
+</div>
+</section>
+
+<section id="services" style="padding:0 clamp(20px,4vw,32px) clamp(64px,10vw,160px);">
+<div style="max-width:1360px;margin:0 auto;display:flex;flex-direction:column;gap:48px;">
+<x-import component-from-global-scope="SHIRONDesignSystem_b79ab4.SectionHeading" label="04 / Услуги" title="Что мы делаем" lead="Четыре направления. В работе они почти всегда сочетаются." hint-size="100%,180px"></x-import>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;">
+<sc-for list="{{ services }}" as="s" hint-placeholder-count="4">
+<div style="background:#161618;border:1px solid rgba(184,186,189,.14);border-radius:4px;display:flex;flex-direction:column;overflow:hidden;">
+<div style="position:relative;aspect-ratio:4/3;overflow:hidden;background:#1c1d20;">
+<div style="width:100%;height:100%;background-image:url({{ s.image }});background-size:cover;background-position:center;"></div>
+<div style="position:absolute;inset:0;background-image:var(--scrim-bottom);"></div>
+</div>
+<div style="padding:28px;display:flex;flex-direction:column;gap:16px;">
+<div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;color:#6e6f72;">{{ s.index }}</div>
+<div style="font-family:Outfit,sans-serif;font-weight:300;font-size:26px;letter-spacing:.06em;">{{ s.title }}</div>
+<div style="font-size:15px;line-height:1.65;color:#b8babd;max-width:34ch;">{{ s.description }}</div>
+<div style="border-top:1px solid rgba(184,186,189,.14);padding-top:16px;display:flex;flex-direction:column;gap:8px;">
+<sc-for list="{{ s.items }}" as="row" hint-placeholder-count="4">
+<div style="font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.5;color:#b8babd;">{{ row }}</div>
+</sc-for>
+</div>
+</div>
+</div>
+</sc-for>
+</div>
+</div>
+</section>
+
+<section id="index" style="padding:clamp(64px,10vw,160px) clamp(20px,4vw,32px);background:#08080a;border-top:1px solid rgba(184,186,189,.14);border-bottom:1px solid rgba(184,186,189,.14);">
+<div style="max-width:1360px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(32px,5vw,80px);align-items:start;">
+<div style="display:flex;flex-direction:column;gap:24px;">
+<div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#7c8a94;">05 / SHIRON Condition Index™</div>
+<h2 style="margin:0;font-family:Outfit,sans-serif;font-weight:300;font-size:clamp(32px,4.4vw,56px);line-height:1.1;letter-spacing:.005em;">Знайте свой автомобиль.</h2>
+<p style="margin:0;font-size:17px;line-height:1.7;color:#b8babd;max-width:52ch;">До начала любых работ автомобиль осматривается по пяти направлениям. Результат фиксируется и обсуждается с владельцем.</p>
+<p style="margin:0;font-size:17px;line-height:1.7;color:#b8babd;max-width:52ch;">На основе оценки формируется SHIRON Treatment Plan — перечень работ именно для этого автомобиля, с указанием того, что делать не нужно.</p>
+<div style="font-family:Outfit,sans-serif;font-weight:300;font-size:22px;line-height:1.45;color:#f2f2f0;max-width:32ch;padding-top:8px;">Никаких универсальных решений. Сначала состояние автомобиля — затем работа.</div>
+<div style="padding-top:8px;">
+<x-import component-from-global-scope="SHIRONDesignSystem_b79ab4.Button" size="lg" on-click="{{ goToContact }}" hint-size="auto,48px">Записаться на диагностику</x-import>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:20px;">
+<div style="position:relative;aspect-ratio:16/9;overflow:hidden;border:1px solid rgba(184,186,189,.14);border-radius:4px;">
+<img src="assets/diagnostics.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;">
+<div style="position:absolute;inset:0;background-image:var(--scrim-bottom);"></div>
+</div>
+<div style="border:1px solid rgba(184,186,189,.14);border-radius:4px;overflow:hidden;">
+<sc-for list="{{ indexRows }}" as="r" hint-placeholder-count="5">
+<div style="display:flex;flex-wrap:wrap;gap:20px;align-items:baseline;padding:22px 24px;background:#161618;border-bottom:1px solid rgba(184,186,189,.14);">
+<span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#6e6f72;">{{ r.n }}</span>
+<span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.16em;color:#f2f2f0;min-width:110px;">{{ r.code }}</span>
+<span style="font-size:15px;color:#b8babd;">{{ r.label }}</span>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+</section>
+
+<section id="process" style="padding:clamp(64px,10vw,160px) clamp(20px,4vw,32px);">
+<div style="max-width:1360px;margin:0 auto;display:flex;flex-direction:column;gap:48px;">
+<x-import component-from-global-scope="SHIRONDesignSystem_b79ab4.SectionHeading" label="06 / Процесс" title="Четыре этапа" lead="Порядок не меняется — независимо от объёма работ." hint-size="100%,180px"></x-import>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;">
+<sc-for list="{{ process }}" as="p" hint-placeholder-count="4">
+<div style="background:#161618;border:1px solid rgba(184,186,189,.14);border-radius:4px;padding:28px;display:flex;flex-direction:column;gap:12px;">
+<span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;color:#7c8a94;">{{ p.n }}</span>
+<span style="font-family:Outfit,sans-serif;font-weight:300;font-size:22px;letter-spacing:.06em;">{{ p.title }}</span>
+<span style="font-size:15px;line-height:1.65;color:#b8babd;">{{ p.text }}</span>
+</div>
+</sc-for>
+</div>
+<div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#6e6f72;">40+ точек контроля · 72 ч средний цикл</div>
+</div>
+</section>
+
+<section style="padding:0 clamp(20px,4vw,32px) clamp(64px,10vw,160px);">
+<div style="max-width:1360px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(32px,5vw,80px) clamp(32px,5vw,80px);align-items:start;">
+<div style="border-top:1px solid rgba(184,186,189,.14);padding-top:24px;display:flex;flex-direction:column;gap:24px;">
+<div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#7c8a94;">07 / Результат</div>
+<h2 style="margin:0;font-family:Outfit,sans-serif;font-weight:300;font-size:clamp(30px,4vw,48px);line-height:1.1;max-width:20ch;">Разница — в деталях.</h2>
+<x-import component-from-global-scope="SHIRONDesignSystem_b79ab4.BeforeAfter" before="assets/before-porsche-front.jpg" after="assets/after-porsche-front.jpg" before-label="До" after-label="После" initial="52" style="margin-top:8px" hint-size="100%,320px"></x-import>
+</div>
+<div style="display:flex;flex-direction:column;gap:20px;padding-top:24px;">
+<p style="margin:0;font-size:17px;line-height:1.7;color:#b8babd;max-width:56ch;">Настоящий результат не всегда заметен на расстоянии. Он проявляется в отражении света, глубине покрытия, чистоте линий кузова и состоянии каждой детали.</p>
+<p style="margin:0;font-size:17px;line-height:1.7;color:#b8babd;max-width:56ch;">Поэтому сравнение показывается честно: один ракурс, один свет, до и после.</p>
+<div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#6e6f72;">Porsche 911 · передняя часть · один ракурс, один свет</div>
+</div>
+</div>
+</section>
+
+<section id="studio" style="padding:clamp(64px,10vw,160px) clamp(20px,4vw,32px);background:#08080a;border-top:1px solid rgba(184,186,189,.14);border-bottom:1px solid rgba(184,186,189,.14);">
+<div style="max-width:1360px;margin:0 auto;display:flex;flex-direction:column;gap:48px;">
+<x-import component-from-global-scope="SHIRONDesignSystem_b79ab4.SectionHeading" label="08 / Стандарт студии" title="Наш стандарт" hint-size="100%,140px"></x-import>
+<div style="display:flex;flex-direction:column;border-top:1px solid rgba(184,186,189,.14);">
+<sc-for list="{{ standard }}" as="st" hint-placeholder-count="4">
+<div style="display:grid;grid-template-columns:minmax(0,48px) minmax(0,260px) minmax(0,1fr);gap:24px;padding:26px 0;border-bottom:1px solid rgba(184,186,189,.14);">
+<span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#6e6f72;">{{ st.n }}</span>
+<span style="font-family:Outfit,sans-serif;font-weight:300;font-size:20px;letter-spacing:.06em;">{{ st.title }}</span>
+<span style="font-size:16px;line-height:1.65;color:#b8babd;max-width:52ch;">{{ st.text }}</span>
+</div>
+</sc-for>
+</div>
+</div>
+</section>
+
+<section id="contact" style="padding:clamp(80px,12vw,180px) clamp(20px,4vw,32px);position:relative;overflow:hidden;">
+<img src="assets/sclass.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:65% 50%;">
+<div style="position:absolute;inset:0;background-image:var(--scrim-left);pointer-events:none;"></div>
+<div style="position:absolute;inset:0;background-image:linear-gradient(105deg,rgba(242,242,240,0) 0%,rgba(242,242,240,.06) 42%,rgba(242,242,240,0) 68%);pointer-events:none;"></div>
+<div style="max-width:1360px;margin:0 auto;position:relative;display:flex;flex-direction:column;gap:40px;align-items:flex-start;">
+<div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#7c8a94;">09 / Запись</div>
+<h2 style="margin:0;font-family:Outfit,sans-serif;font-weight:200;font-size:clamp(36px,6vw,72px);line-height:1.06;letter-spacing:.005em;max-width:16ch;">Ваш автомобиль. Наш стандарт.</h2>
+<p style="margin:0;font-size:19px;line-height:1.6;color:#b8babd;max-width:52ch;">Расскажите нам об автомобиле и его текущем состоянии. Мы определим необходимый объём работ и подготовим индивидуальный план.</p>
+<div style="display:flex;flex-wrap:wrap;gap:12px;">
+<x-import component-from-global-scope="SHIRONDesignSystem_b79ab4.Button" size="lg" on-click="{{ openDialog }}" hint-size="auto,48px">Записаться в SHIRON</x-import>
+<x-import component-from-global-scope="SHIRONDesignSystem_b79ab4.Button" variant="secondary" size="lg" on-click="{{ openDialog }}" hint-size="auto,48px">Получить консультацию</x-import>
+</div>
+<div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#6e6f72;">Только по записи · 01 автомобиль в работе</div>
+</div>
+</section>
+
+<footer style="padding:clamp(48px,6vw,80px) clamp(20px,4vw,32px) 40px;border-top:1px solid rgba(184,186,189,.14);">
+<div style="max-width:1360px;margin:0 auto;display:flex;flex-direction:column;gap:40px;">
+<div style="display:flex;flex-wrap:wrap;gap:40px;justify-content:space-between;align-items:flex-start;">
+<div style="display:flex;flex-direction:column;gap:12px;">
+<x-import component-from-global-scope="SHIRONDesignSystem_b79ab4.Logo" size="22" hint-size="auto,24px"></x-import>
+<span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#b8babd;">Частная автомобильная студия</span>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:24px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#b8babd;">
+<a href="#services">Услуги</a><a href="#index">Индекс состояния</a><a href="#process">Процесс</a><a href="#studio">Студия</a><a href="#contact">Контакты</a>
+</div>
+<x-import component-from-global-scope="SHIRONDesignSystem_b79ab4.Button" variant="secondary" on-click="{{ openDialog }}" hint-size="auto,44px">Записаться</x-import>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;padding-top:24px;border-top:1px solid rgba(184,186,189,.14);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#6e6f72;">
+<span>Только по записи</span>
+<span>SHIRON / 2018—2026</span>
+</div>
+</div>
+</footer>
+
+<x-import component-from-global-scope="SHIRONDesignSystem_b79ab4.Dialog" open="{{ dialogOpen }}" title="Запись в студию" on-close="{{ closeDialog }}" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:16px;">
+<p style="margin:0;font-size:16px;line-height:1.65;color:#b8babd;">Укажите автомобиль и его текущее состояние. Ответим и предложим время осмотра.</p>
+<div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#6e6f72;">Контактные данные добавляются на этапе интеграции формы</div>
+</div>
+</x-import>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1360}}">
+class Component extends DCLogic {
+  state = { scrolled: false, activeNav: 'services', dialogOpen: false };
+
+  componentDidMount() {
+    this._onScroll = () => {
+      const s = window.scrollY > 24;
+      if (s !== this.state.scrolled) this.setState({ scrolled: s });
+      const ids = ['services', 'index', 'process', 'studio', 'contact'];
+      let active = this.state.activeNav;
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= 140) active = id;
+      }
+      if (active !== this.state.activeNav) this.setState({ activeNav: active });
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this._onScroll);
+  }
+
+  jump(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 72, behavior: 'smooth' });
+  }
+
+  renderVals() {
+    return {
+      scrolled: this.state.scrolled,
+      activeNav: this.state.activeNav,
+      dialogOpen: this.state.dialogOpen,
+      openDialog: () => this.setState({ dialogOpen: true }),
+      closeDialog: () => this.setState({ dialogOpen: false }),
+      goTo: (id) => this.jump(id),
+      goToContact: () => this.jump('contact'),
+      goToServices: () => this.jump('services'),
+      navItems: [
+        { label: 'Услуги', value: 'services' },
+        { label: 'Индекс состояния', value: 'index' },
+        { label: 'Процесс', value: 'process' },
+        { label: 'Студия', value: 'studio' },
+        { label: 'Контакты', value: 'contact' }
+      ],
+      stats: [
+        { value: '08+', label: 'лет работы' },
+        { value: '1 200+', label: 'автомобилей' },
+        { value: '97%', label: 'повторных клиентов' },
+        { value: '40+', label: 'точек контроля' },
+        { value: '72 ч', label: 'средний цикл' },
+        { value: '01', label: 'автомобиль в основной зоне' }
+      ],
+      services: [
+        { index: '01', image: 'assets/polishing.jpg', title: 'ВОССТАНОВЛЕНИЕ', description: 'Возвращаем лаку исходную геометрию и глубину цвета вместо того, чтобы скрывать дефекты.', items: ['Многоступенчатая полировка', 'Удаление дефектов ЛКП', 'Восстановление глубины цвета', 'Восстановление отдельных элементов', 'Работа с оптикой'] },
+        { index: '02', image: 'assets/headlight.jpg', title: 'ЗАЩИТА', description: 'Фиксируем достигнутое состояние: покрытия подбираются под конкретный автомобиль и режим эксплуатации.', items: ['Керамическое покрытие', 'PPF', 'Защитные покрытия для стёкол', 'Защита кожи и интерьера', 'Защита дисков'] },
+        { index: '03', image: 'assets/leather.jpg', title: 'ДЕТЕЙЛИНГ', description: 'Работа с материалами салона и кузова, включая зоны, которые обычно пропускают.', items: ['Внешний детейлинг', 'Детейлинг интерьера', 'Глубокая очистка', 'Работа с кожей', 'Работа с алькантарой', 'Труднодоступные зоны'] },
+        { index: '04', image: 'assets/studio-lift.jpg', title: 'ПОДДЕРЖАНИЕ', description: 'Состояние удерживается регулярностью. Автомобиль возвращается в студию по графику, а не по факту проблемы.', items: ['Регулярный уход', 'Поддерживающий детейлинг', 'Обновление защитных покрытий', 'Сезонная подготовка'] }
+      ],
+      indexRows: [
+        { n: '01', code: 'ЛКП', label: 'Лакокрасочное покрытие' },
+        { n: '02', code: 'КУЗОВ', label: 'Кузов и внешние элементы' },
+        { n: '03', code: 'СТЕКЛО', label: 'Стекло и оптика' },
+        { n: '04', code: 'ИНТЕРЬЕР', label: 'Интерьер и материалы' },
+        { n: '05', code: 'ЗАЩИТА', label: 'Текущее состояние защитных покрытий' }
+      ],
+      process: [
+        { n: '01', title: 'ОСМОТР', text: 'Определяем текущее состояние автомобиля и зоны, требующие внимания.' },
+        { n: '02', title: 'ПЛАН', text: 'Формируем индивидуальный SHIRON Treatment Plan.' },
+        { n: '03', title: 'РАБОТА', text: 'Выполняем необходимые процедуры с контролем каждого этапа.' },
+        { n: '04', title: 'КОНТРОЛЬ', text: 'Проверяем результат перед передачей автомобиля владельцу.' }
+      ],
+      standard: [
+        { n: '01', title: 'БЕЗ СПЕШКИ', text: 'Работа не ускоряется в ущерб результату.' },
+        { n: '02', title: 'ОДИН АВТОМОБИЛЬ ЗА РАЗ', text: 'Ограниченное количество автомобилей позволяет сохранять концентрацию на каждом проекте.' },
+        { n: '03', title: 'КОНТРОЛЬ КАЖДОЙ ДЕТАЛИ', text: 'Результат проверяется до передачи автомобиля.' },
+        { n: '04', title: 'ВОССТАНОВИТЬ, А НЕ СКРЫТЬ', text: 'Задача — восстановить и сохранить состояние автомобиля, а не скрыть недостатки.' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
