@@ -161,9 +161,9 @@ h1.brand{margin:0;font-family:Outfit,sans-serif;font-weight:200;font-size:clamp(
 
 /* Result section */
 .result-section{padding:0 clamp(20px,4vw,32px) clamp(64px,10vw,160px);}
-.result-grid{max-width:1360px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(32px,5vw,80px);align-items:center;}
-.result-grid>.col-body{display:flex;flex-direction:column;gap:24px;justify-content:center;}
-.result-grid>.col-body p{margin:0;font-size:clamp(15px,1.5vw,17px);line-height:1.7;color:var(--cold-silver);max-width:46ch;}
+.result-grid{max-width:1360px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(32px,5vw,80px);align-items:start;}
+.result-grid>.col-body{display:flex;flex-direction:column;justify-content:space-between;}
+.result-grid>.col-body p{margin:0;font-size:clamp(20px,2.6vw,28px);line-height:1.5;color:var(--cold-silver);max-width:46ch;font-weight:300;}
 
 /* Studio standard */
 .studio-section{padding:clamp(64px,10vw,160px) clamp(20px,4vw,32px);background:var(--surface-sunken);border-top:1px solid var(--border-hairline);border-bottom:1px solid var(--border-hairline);}
@@ -576,6 +576,24 @@ window.addEventListener('mouseup', () => dragging = false);
 ba.addEventListener('touchstart', (e) => { dragging = true; setBa(pctFromEvent(e)); });
 window.addEventListener('touchmove', (e) => { if (dragging) setBa(pctFromEvent(e)); });
 window.addEventListener('touchend', () => dragging = false);
+
+/* Align result-section text block with the before/after image */
+function alignResultText() {
+  const resultBody = document.querySelector('.result-grid > .col-body');
+  const resultGrid = document.querySelector('.result-grid');
+  if (!resultBody || !ba || !resultGrid) return;
+  if (window.matchMedia('(min-width: 700px)').matches) {
+    const gridRect = resultGrid.getBoundingClientRect();
+    const baRect = ba.getBoundingClientRect();
+    resultBody.style.marginTop = (baRect.top - gridRect.top) + 'px';
+    resultBody.style.minHeight = baRect.height + 'px';
+  } else {
+    resultBody.style.marginTop = '';
+    resultBody.style.minHeight = '';
+  }
+}
+window.addEventListener('load', alignResultText);
+window.addEventListener('resize', alignResultText);
 </script>
 </body>
 </html>
