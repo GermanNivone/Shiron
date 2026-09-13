@@ -449,6 +449,36 @@ header.nav.scrolled{background:rgba(10,10,11,.82);backdrop-filter:blur(14px);-we
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;
     transition-duration:.01ms!important;scroll-behavior:auto!important;}
 }
+
+/* ---- Hero intro ----
+   The hero is already in view on load, so it runs as one timed sequence
+   rather than waiting on the scroll observer. */
+@media(prefers-reduced-motion:no-preference){
+  /* the room settles into place: a long, barely-perceptible pull-back */
+  html.motion .hero img.bg{transform:scale(1.09);
+    transition:transform 3.2s cubic-bezier(.22,1,.28,1);}
+  html.motion .hero.lit img.bg{transform:none;}
+
+  /* the darkest veil lifts as the frame settles */
+  html.motion .hero .scrim1{opacity:1;transition:opacity 2.4s var(--ease-reveal);}
+  html.motion .hero.lit .scrim1{opacity:.72;}
+
+  /* wordmark resolves letter by letter */
+  html.motion h1.brand .ch{display:inline-block;letter-spacing:0;opacity:0;transform:translateY(.3em);
+    transition:opacity 1.3s var(--ease-reveal),transform 1.3s var(--ease-reveal);}
+  html.motion .hero.lit h1.brand .ch{opacity:1;transform:none;}
+
+  html.motion .hero .tagline,
+  html.motion .hero .hero-btns,
+  html.motion .hero .hero-foot{opacity:0;transform:translateY(16px);
+    transition:opacity 1.2s var(--ease-reveal),transform 1.2s var(--ease-reveal);}
+  html.motion .hero.lit .tagline,
+  html.motion .hero.lit .hero-btns,
+  html.motion .hero.lit .hero-foot{opacity:1;transform:none;}
+  html.motion .hero.lit .tagline{transition-delay:1.05s;}
+  html.motion .hero.lit .hero-btns{transition-delay:1.22s;}
+  html.motion .hero.lit .hero-foot{transition-delay:1.4s;}
+}
 </style>
 </head>
 <body>
@@ -781,9 +811,6 @@ window.addEventListener('touchend', () => dragging = false);
 document.documentElement.classList.add('motion');
 
 const REVEAL_GROUPS = [
-  ['.hero-top > *', 90],
-  ['.hero-cta-block .btn', 80],
-  ['.hero-foot > *', 60],
   ['.stats-grid .stat', 70],
   ['.two-col-grid .col-head > *', 80],
   ['.two-col-grid .col-body > *', 80],
@@ -875,6 +902,21 @@ onNavScroll();
 /* Slider handle reacts while dragging */
 ba.addEventListener('pointerdown', () => ba.classList.add('dragging'));
 window.addEventListener('pointerup', () => ba.classList.remove('dragging'));
+
+/* ---- Hero intro ---- */
+const heroEl = document.querySelector('.hero');
+const brandEl = heroEl.querySelector('h1.brand');
+const brandText = brandEl.textContent.trim();
+
+// Split for the per-letter reveal, but keep the word intact for assistive tech:
+// without this a screen reader announces "S H I R O N".
+brandEl.setAttribute('aria-label', brandText);
+brandEl.innerHTML = Array.from(brandText).map((ch, i) =>
+  '<span class="ch" aria-hidden="true" style="transition-delay:' + (260 + i * 85) + 'ms">' +
+  ch + '</span>').join('');
+
+// Start on the next frame so the initial state paints before it transitions.
+requestAnimationFrame(() => requestAnimationFrame(() => heroEl.classList.add('lit')));
 </script>
 </body>
 </html>
