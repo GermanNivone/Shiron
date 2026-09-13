@@ -121,9 +121,10 @@ h1.brand{margin:0;font-family:Outfit,sans-serif;font-weight:200;font-size:clamp(
 /* Condition Index */
 .index-section{padding:clamp(64px,10vw,160px) clamp(20px,4vw,32px);background:var(--surface-sunken);border-top:1px solid var(--border-hairline);border-bottom:1px solid var(--border-hairline);}
 .index-grid{max-width:1360px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(32px,5vw,80px);align-items:start;}
-.index-left{display:flex;flex-direction:column;gap:24px;}
+.index-left{display:flex;flex-direction:column;gap:24px;border-top:1px solid var(--border-hairline);padding-top:24px;}
 .index-left h2{margin:0;font-family:Outfit,sans-serif;font-weight:300;font-size:clamp(32px,4.4vw,56px);line-height:1.1;}
 .index-left p{margin:0;font-size:17px;line-height:1.7;color:var(--cold-silver);max-width:52ch;}
+.index-footer{max-width:1360px;margin:0 auto;padding-top:clamp(40px,6vw,80px);}
 .index-cta-line{font-family:Outfit,sans-serif;font-weight:300;font-size:22px;line-height:1.45;color:var(--off-white);max-width:32ch;padding-top:8px;}
 .index-right{display:flex;flex-direction:column;gap:20px;}
 .index-img{position:relative;aspect-ratio:16/9;overflow:hidden;border:1px solid var(--border-hairline);border-radius:4px;}
@@ -298,8 +299,6 @@ footer{padding:clamp(48px,6vw,80px) clamp(20px,4vw,32px) 40px;border-top:1px sol
       <h2>Знайте свой автомобиль.</h2>
       <p>До начала любых работ автомобиль осматривается по пяти направлениям. Результат фиксируется и обсуждается с владельцем.</p>
       <p>На основе оценки формируется SHIRON Treatment Plan — перечень работ именно для этого автомобиля, с указанием того, что делать не нужно.</p>
-      <div class="index-cta-line">Никаких универсальных решений. Сначала состояние автомобиля — затем работа.</div>
-      <div style="padding-top:8px;"><button class="btn btn-primary" id="indexContactBtn">Записаться на диагностику</button></div>
     </div>
     <div class="index-right">
       <div class="index-img">
@@ -308,6 +307,11 @@ footer{padding:clamp(48px,6vw,80px) clamp(20px,4vw,32px) 40px;border-top:1px sol
       </div>
       <div class="index-rows" id="indexRows"></div>
     </div>
+  </div>
+  <div class="index-footer">
+    <div class="hr-fade"></div>
+    <div class="index-cta-line" style="margin-top:clamp(24px,4vw,48px);">Никаких универсальных решений. Сначала состояние автомобиля — затем работа.</div>
+    <div style="padding-top:16px;"><button class="btn btn-primary" id="indexContactBtn">Записаться на диагностику</button></div>
   </div>
 </section>
 
