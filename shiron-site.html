@@ -249,7 +249,7 @@ h1.brand{margin:0;font-family:Outfit,sans-serif;font-weight:200;font-size:clamp(
 
 /* Stats */
 .stats-section{padding:clamp(40px,6vw,88px) clamp(20px,4vw,32px) clamp(64px,10vw,160px);}
-.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:32px;}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(140px,100%),1fr));gap:32px;}
 .stat{display:flex;flex-direction:column;gap:8px;}
 .stat .val{font-family:Outfit,sans-serif;font-weight:300;font-size:clamp(28px,3vw,40px);color:var(--off-white);}
 .stat .lbl{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--slate-grey);}
@@ -299,7 +299,7 @@ h1.brand{margin:0;font-family:Outfit,sans-serif;font-weight:200;font-size:clamp(
 /* Services */
 .services-section{padding:0 clamp(20px,4vw,32px) clamp(64px,10vw,160px);}
 .services-wrap{max-width:1360px;margin:0 auto;display:flex;flex-direction:column;gap:48px;}
-.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:20px;}
 .service-card{background:var(--graphite);border:1px solid var(--border-hairline);border-radius:4px;display:flex;flex-direction:column;overflow:hidden;}
 .service-img{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--graphite-2);}
 .service-img .bg{width:100%;height:100%;background-size:cover;background-position:center;}
@@ -313,7 +313,7 @@ h1.brand{margin:0;font-family:Outfit,sans-serif;font-weight:200;font-size:clamp(
 
 /* Condition Index */
 .index-section{padding:clamp(64px,10vw,160px) clamp(20px,4vw,32px);background:var(--surface-sunken);border-top:1px solid var(--border-hairline);border-bottom:1px solid var(--border-hairline);}
-.index-grid{max-width:1360px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(32px,5vw,80px);align-items:start;}
+.index-grid{max-width:1360px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:clamp(32px,5vw,80px);align-items:start;}
 .index-left{display:flex;flex-direction:column;gap:24px;border-top:1px solid var(--border-hairline);padding-top:24px;}
 .index-left h2{margin:0;font-family:Outfit,sans-serif;font-weight:300;font-size:clamp(32px,4.4vw,56px);line-height:1.1;}
 .index-left p{margin:0;font-size:17px;line-height:1.7;color:var(--cold-silver);max-width:52ch;}
@@ -331,7 +331,7 @@ h1.brand{margin:0;font-family:Outfit,sans-serif;font-weight:200;font-size:clamp(
 /* Process */
 .process-section{padding:clamp(64px,10vw,160px) clamp(20px,4vw,32px);}
 .process-wrap{max-width:1360px;margin:0 auto;display:flex;flex-direction:column;gap:48px;}
-.process-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;}
+.process-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:16px;}
 .process-card{background:var(--graphite);border:1px solid var(--border-hairline);border-radius:4px;padding:28px;display:flex;flex-direction:column;gap:12px;}
 .process-card .n{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;color:var(--signal);}
 .process-card .t{font-family:Outfit,sans-serif;font-weight:300;font-size:22px;letter-spacing:.06em;}
@@ -352,7 +352,7 @@ h1.brand{margin:0;font-family:Outfit,sans-serif;font-weight:200;font-size:clamp(
 
 /* Result section */
 .result-section{padding:0 clamp(20px,4vw,32px) clamp(64px,10vw,160px);}
-.result-grid{max-width:1360px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(32px,5vw,80px);align-items:center;}
+.result-grid{max-width:1360px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:clamp(32px,5vw,80px);align-items:center;}
 .result-grid>.col-body{gap:22px;padding-top:0;}
 .result-grid>.col-body p{font-size:17px;line-height:1.75;max-width:44ch;}
 .result-grid>.col-body .pull-quote{font-size:clamp(19px,1.9vw,24px);line-height:1.45;max-width:34ch;}
@@ -493,6 +493,58 @@ header.nav.scrolled{background:rgba(10,10,11,.82);backdrop-filter:blur(14px);-we
   html.motion .hero.lit .hero-btns{transition-delay:1.22s;}
   html.motion .hero.lit .hero-foot{transition-delay:1.4s;}
 }
+
+/* ---- Responsive fixes ---- */
+
+/* 100vh on mobile is the height with the URL bar hidden, so the hero resized
+   as the bar slid in and out during scroll. svh is fixed to the bar-visible
+   height and never changes mid-scroll. */
+@supports(height:100svh){
+  .hero{min-height:calc(100svh - 72px);}
+}
+
+/* Below 400px the logo, CTA and burger no longer fit on one row — the burger
+   was being clipped. The CTA moves into the menu instead. */
+@media(max-width:359px){
+  .nav-cta-wrap .btn{display:none;}
+}
+.mm-cta{color:var(--off-white)!important;letter-spacing:.12em;}
+@media(min-width:900px){.mm-cta{display:none;}}
+
+.swipe-hint{display:none;align-items:center;gap:10px;
+  font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--slate-grey);}
+.swipe-hint .bar{flex:1;height:1px;background:var(--border-hairline);}
+
+/* Four stacked cards ran to ~2900px — nearly four screens for one section.
+   Below the two-column breakpoint they become a snap carousel; the 84% card
+   width leaves the next one peeking, which is what signals it can be swiped. */
+@media(max-width:879px){
+  .services-grid{display:flex;grid-template-columns:none;overflow-x:auto;
+    scroll-snap-type:x mandatory;gap:14px;
+    scrollbar-width:none;-ms-overflow-style:none;
+    margin-inline:calc(clamp(20px,4vw,32px)*-1);
+    padding-inline:clamp(20px,4vw,32px);padding-bottom:4px;}
+  .services-grid::-webkit-scrollbar{display:none;}
+  .service-card{flex:0 0 84%;scroll-snap-align:center;}
+  .services-wrap{gap:28px;}
+  .swipe-hint{display:flex;}
+}
+
+/* A 1.83:1 photo in a portrait frame keeps only a narrow vertical slice, which
+   read as a stray wheel rather than a car. Favour the body and deepen the
+   scrim so the copy sits on tone instead of detail. */
+@media(max-width:720px){
+  .contact-section img.bg{object-position:78% 46%;}
+  .contact-section .scrim1{background-image:linear-gradient(180deg,rgba(10,10,11,.9) 0%,rgba(10,10,11,.78) 45%,rgba(10,10,11,.92) 100%);}
+}
+
+/* Touch targets. The burger was 38x29 — the one control phone users actually
+   need. Padding grows the hit area without moving anything visually, since the
+   bars stay centred and the links keep their baseline. */
+.burger{padding:16px 11px;margin-right:-11px;}
+.footer-links a,.footer-contacts a{display:inline-block;padding-block:6px;}
+.nav-links a{padding-top:6px;}
 </style>
 </head>
 <body>
@@ -518,6 +570,7 @@ header.nav.scrolled{background:rgba(10,10,11,.82);backdrop-filter:blur(14px);-we
     <a href="#process">Процесс</a>
     <a href="#studio">Студия</a>
     <a href="#contact">Контакты</a>
+    <a class="mm-cta" href="https://t.me/shiron_auto_bot" target="_blank" rel="noopener">Записаться в студию</a>
   </div>
 </header>
 
@@ -580,6 +633,7 @@ header.nav.scrolled{background:rgba(10,10,11,.82);backdrop-filter:blur(14px);-we
       <div class="lead">Четыре направления. В работе они почти всегда сочетаются.</div>
     </div>
     <div class="services-grid" id="servicesGrid"></div>
+    <div class="swipe-hint" aria-hidden="true"><span>Листайте</span><span class="bar"></span><span id="swipeCount">1 / 4</span></div>
   </div>
 </section>
 
@@ -925,6 +979,36 @@ brandEl.innerHTML = Array.from(brandText).map((ch, i) =>
 
 // Start on the next frame so the initial state paints before it transitions.
 requestAnimationFrame(() => requestAnimationFrame(() => heroEl.classList.add('lit')));
+
+/* In carousel mode the off-screen cards never intersect the viewport, so they
+   would sit invisible until swiped to. Reveal the whole strip together once the
+   grid itself comes into view. */
+const stripIO = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.querySelectorAll('.rv').forEach(el => el.classList.add('in'));
+    stripIO.unobserve(e.target);
+  });
+}, { threshold: 0.1 });
+stripIO.observe(document.getElementById('servicesGrid'));
+
+/* Carousel position readout — the hint only renders below the grid breakpoint */
+const grid = document.getElementById('servicesGrid');
+const swipeCount = document.getElementById('swipeCount');
+const cards = [...grid.children];
+if (swipeCount && cards.length) {
+  swipeCount.textContent = '1 / ' + cards.length;
+  grid.addEventListener('scroll', () => {
+    const mid = grid.scrollLeft + grid.clientWidth / 2;
+    let nearest = 0, best = Infinity;
+    cards.forEach((card, i) => {
+      const centre = card.offsetLeft + card.offsetWidth / 2;
+      const d = Math.abs(centre - mid);
+      if (d < best) { best = d; nearest = i; }
+    });
+    swipeCount.textContent = (nearest + 1) + ' / ' + cards.length;
+  }, { passive: true });
+}
 </script>
 </body>
 </html>
