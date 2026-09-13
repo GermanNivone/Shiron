@@ -33,6 +33,7 @@
         "telephone": "+79178628359",
         "email": "germanykk2000@gmail.com",
         "sameAs": [
+          "https://t.me/shiron_auto_bot",
           "https://t.me/Hanif_kadermyatov"
         ],
         "openingHoursSpecification": {
@@ -434,7 +435,7 @@ body{overflow-wrap:break-word;}
       <li><a href="#contact" data-id="contact">Контакты</a></li>
     </ul>
     <div class="nav-cta-wrap">
-      <button class="btn btn-primary btn-sm" id="navCta">Записаться</button>
+      <a class="btn btn-primary btn-sm" href="https://t.me/shiron_auto_bot" target="_blank" rel="noopener">Записаться</a>
       <button class="burger" id="burgerBtn" aria-label="Меню"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -459,7 +460,7 @@ body{overflow-wrap:break-word;}
     </div>
     <div class="hero-cta-block">
       <div class="hero-btns">
-        <button class="btn btn-primary" id="heroContactBtn">Записаться в студию</button>
+        <a class="btn btn-primary" href="https://t.me/shiron_auto_bot" target="_blank" rel="noopener">Записаться в студию</a>
         <a class="btn btn-secondary" href="#services">Посмотреть услуги</a>
       </div>
     </div>
@@ -516,7 +517,7 @@ body{overflow-wrap:break-word;}
       <h2>Знайте свой автомобиль.</h2>
       <p>До начала любых работ автомобиль осматривается по пяти направлениям. Результат фиксируется и обсуждается с владельцем.</p>
       <p>На основе оценки формируется SHIRON Treatment Plan — перечень работ именно для этого автомобиля, с указанием того, что делать не нужно.</p>
-      <div style="padding-top:8px;"><button class="btn btn-primary" id="indexContactBtn">Записаться на диагностику</button></div>
+      <div style="padding-top:8px;"><a class="btn btn-primary" href="https://t.me/shiron_auto_bot" target="_blank" rel="noopener">Записаться на диагностику</a></div>
     </div>
     <div class="index-right">
       <div class="index-img">
@@ -588,8 +589,8 @@ body{overflow-wrap:break-word;}
     <h2>Ваш автомобиль. Наш стандарт.</h2>
     <p>Расскажите нам об автомобиле и его текущем состоянии. Мы определим необходимый объём работ и подготовим индивидуальный план.</p>
     <div class="hero-btns">
-      <button class="btn btn-primary" id="contactOpenBtn1">Записаться в SHIRON</button>
-      <button class="btn btn-secondary" id="contactOpenBtn2">Получить консультацию</button>
+      <a class="btn btn-primary" href="https://t.me/shiron_auto_bot" target="_blank" rel="noopener">Записаться в SHIRON</a>
+      <a class="btn btn-secondary" href="https://t.me/shiron_auto_bot" target="_blank" rel="noopener">Получить консультацию</a>
     </div>
     <div class="eyebrow">Только по записи · 01 автомобиль в работе</div>
     <div class="contact-details">
@@ -611,7 +612,7 @@ body{overflow-wrap:break-word;}
       <div class="footer-links">
         <a href="#services">Услуги</a><a href="#index">Индекс состояния</a><a href="#process">Процесс</a><a href="#studio">Студия</a><a href="#contact">Контакты</a>
       </div>
-      <button class="btn btn-secondary" id="footerCta">Записаться</button>
+      <a class="btn btn-secondary" href="https://t.me/shiron_auto_bot" target="_blank" rel="noopener">Записаться</a>
     </div>
     <div class="footer-contacts">
       <a href="tel:+79178628359">+7 917 862-83-59</a>
@@ -626,29 +627,6 @@ body{overflow-wrap:break-word;}
     </div>
   </div>
 </footer>
-
-<div class="overlay" id="dialogOverlay">
-  <div class="dialog">
-    <button class="close" id="dialogClose" aria-label="Закрыть">&times;</button>
-    <h3>Запись в студию</h3>
-    <form id="dialogForm">
-      <div class="field"><label>Имя</label><input type="text" name="name" required></div>
-      <div class="field"><label>Автомобиль</label><input type="text" name="car" placeholder="Марка, модель, год"></div>
-      <div class="field"><label>Комментарий</label><textarea name="comment" rows="3" placeholder="Текущее состояние автомобиля"></textarea></div>
-      <label class="consent">
-        <input type="checkbox" name="consent" required>
-        <span>Согласен с <a href="/privacy" target="_blank" rel="noopener">политикой обработки персональных данных</a></span>
-      </label>
-      <button type="submit" class="btn btn-primary" style="width:100%;">Перейти в Telegram</button>
-    </form>
-    <div class="note">Откроется чат с сообщением — останется нажать «отправить»</div>
-    <div class="dialog-alt">
-      Или напрямую:
-      <a href="tel:+79178628359">+7 917 862-83-59</a>
-      <a href="mailto:germanykk2000@gmail.com">germanykk2000@gmail.com</a>
-    </div>
-  </div>
-</div>
 
 <script>
 const services = [
@@ -743,36 +721,6 @@ const burgerBtn = document.getElementById('burgerBtn');
 const mobileMenu = document.getElementById('mobileMenu');
 burgerBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
 mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
-
-/* Dialog */
-const overlay = document.getElementById('dialogOverlay');
-function openDialog() { overlay.classList.add('open'); }
-function closeDialog() { overlay.classList.remove('open'); }
-document.getElementById('navCta').addEventListener('click', openDialog);
-document.getElementById('heroContactBtn').addEventListener('click', openDialog);
-document.getElementById('indexContactBtn').addEventListener('click', openDialog);
-document.getElementById('contactOpenBtn1').addEventListener('click', openDialog);
-document.getElementById('contactOpenBtn2').addEventListener('click', openDialog);
-document.getElementById('footerCta').addEventListener('click', openDialog);
-document.getElementById('dialogClose').addEventListener('click', closeDialog);
-overlay.addEventListener('click', (e) => { if (e.target === overlay) closeDialog(); });
-const TELEGRAM_USER = 'Hanif_kadermyatov';
-const dialogFormEl = document.getElementById('dialogForm');
-dialogFormEl.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const fd = new FormData(dialogFormEl);
-  const lines = ['Здравствуйте! Хочу записаться в SHIRON.'];
-  const name = (fd.get('name') || '').trim();
-  const car = (fd.get('car') || '').trim();
-  const comment = (fd.get('comment') || '').trim();
-  if (name) lines.push('Имя: ' + name);
-  if (car) lines.push('Автомобиль: ' + car);
-  if (comment) lines.push('Состояние: ' + comment);
-  // opens the chat with the message prefilled; the visitor only has to send it
-  window.open('https://t.me/' + TELEGRAM_USER + '?text=' + encodeURIComponent(lines.join('\n')), '_blank', 'noopener');
-  closeDialog();
-  dialogFormEl.reset();
-});
 
 /* Before/After slider */
 const ba = document.getElementById('baSlider');
