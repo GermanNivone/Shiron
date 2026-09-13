@@ -94,7 +94,8 @@ h1.brand{margin:0;font-family:Outfit,sans-serif;font-weight:200;font-size:clamp(
 .col-body{display:flex;flex-direction:column;gap:20px;padding-top:24px;}
 .col-body p{margin:0;font-size:17px;line-height:1.7;color:var(--cold-silver);max-width:56ch;}
 .hr-fade{margin-top:12px;height:1px;background:linear-gradient(90deg,rgba(124,138,148,0) 0%,rgba(184,186,189,.45) 50%,rgba(124,138,148,0) 100%);}
-.pull-quote{font-family:Outfit,sans-serif;font-weight:300;font-size:24px;letter-spacing:.02em;color:var(--off-white);}
+.pull-quote{font-family:Outfit,sans-serif;font-weight:300;font-size:clamp(24px,3vw,36px);letter-spacing:.02em;color:var(--off-white);}
+.philo-footer{max-width:1360px;margin:0 auto;padding-top:clamp(40px,6vw,80px);}
 
 /* Section heading component */
 .section-heading{display:flex;flex-direction:column;gap:14px;max-width:760px;}
@@ -271,9 +272,11 @@ footer{padding:clamp(48px,6vw,80px) clamp(20px,4vw,32px) 40px;border-top:1px sol
     <div class="col-body">
       <p>SHIRON не работает по принципу потока. Автомобиль не встаёт в очередь — он проходит оценку состояния, и только после этого определяется объём работ.</p>
       <p>Мастера работают с поверхностью, материалами и деталями: кромки, стыки, зоны под уплотнителями, состояние кожи и оптики. Именно эти участки определяют, как автомобиль выглядит через год.</p>
-      <div class="hr-fade"></div>
-      <div class="pull-quote">Меньше объёма. Больше внимания.</div>
     </div>
+  </div>
+  <div class="philo-footer">
+    <div class="hr-fade"></div>
+    <div class="pull-quote" style="margin-top:clamp(24px,4vw,48px);">Меньше объёма. Больше внимания.</div>
   </div>
 </section>
 
