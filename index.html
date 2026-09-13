@@ -402,6 +402,53 @@ footer{padding:clamp(48px,6vw,80px) clamp(20px,4vw,32px) 40px;border-top:1px sol
 .stats-grid>*{min-width:0;}
 
 body{overflow-wrap:break-word;}
+
+/* ---- Motion ----
+   Reveal styles are scoped to html.motion, which only JS sets: if the script
+   never runs, nothing is hidden and the page reads exactly as before. */
+:root{
+  --ease-reveal:cubic-bezier(.16,1,.3,1);
+  --ease-micro:cubic-bezier(.4,0,.2,1);
+}
+
+/* smooth out the hover states that previously snapped */
+.nav-links a,.mobile-menu a,.footer-links a,.footer-contacts a,
+.footer-bottom a,.contact-details a{transition:color .28s var(--ease-micro),border-color .28s var(--ease-micro);}
+.btn{transition:background-color .3s var(--ease-micro),border-color .3s var(--ease-micro),color .3s var(--ease-micro),transform .3s var(--ease-micro);}
+.btn:active{transform:scale(.985);}
+
+header.nav{transition:border-color .4s var(--ease-micro),background-color .4s var(--ease-micro);}
+header.nav.scrolled{background:rgba(10,10,11,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom-color:var(--border-hairline);}
+
+/* cards lift and their imagery drifts in a touch on hover */
+.service-card{transition:transform .5s var(--ease-reveal),border-color .5s var(--ease-micro);}
+.service-card:hover{transform:translateY(-5px);border-color:rgba(184,186,189,.3);}
+.service-img .bg{transition:transform 1.1s var(--ease-reveal);}
+.service-card:hover .service-img .bg{transform:scale(1.05);}
+.index-img img{transition:transform 1.2s var(--ease-reveal);}
+.index-img:hover img{transform:scale(1.04);}
+
+.process-card{transition:transform .45s var(--ease-reveal),border-color .45s var(--ease-micro);}
+.process-card:hover{transform:translateY(-4px);border-color:rgba(184,186,189,.28);}
+.index-row,.standard-row{transition:background-color .35s var(--ease-micro);}
+.index-row:hover,.standard-row:hover{background:var(--graphite-2);}
+
+.ba .handle{transition:transform .3s var(--ease-micro),box-shadow .3s var(--ease-micro);}
+.ba:hover .handle{transform:translate(-50%,-50%) scale(1.08);}
+.ba.dragging .handle{transform:translate(-50%,-50%) scale(.94);}
+
+@media(prefers-reduced-motion:no-preference){
+  html.motion .rv{opacity:0;transform:translateY(22px);
+    transition:opacity .95s var(--ease-reveal),transform .95s var(--ease-reveal);}
+  html.motion .rv-img{opacity:0;transform:scale(1.03);
+    transition:opacity 1.1s var(--ease-reveal),transform 1.1s var(--ease-reveal);}
+  html.motion .rv.in,html.motion .rv-img.in{opacity:1;transform:none;}
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;
+    transition-duration:.01ms!important;scroll-behavior:auto!important;}
+}
 </style>
 </head>
 <body>
@@ -728,6 +775,106 @@ window.addEventListener('mouseup', () => dragging = false);
 ba.addEventListener('touchstart', (e) => { dragging = true; setBa(pctFromEvent(e)); });
 window.addEventListener('touchmove', (e) => { if (dragging) setBa(pctFromEvent(e)); });
 window.addEventListener('touchend', () => dragging = false);
+
+/* ---- Motion ----
+   Opt in from JS so a script failure can never leave content hidden. */
+document.documentElement.classList.add('motion');
+
+const REVEAL_GROUPS = [
+  ['.hero-top > *', 90],
+  ['.hero-cta-block .btn', 80],
+  ['.hero-foot > *', 60],
+  ['.stats-grid .stat', 70],
+  ['.two-col-grid .col-head > *', 80],
+  ['.two-col-grid .col-body > *', 80],
+  ['.philo-footer > *', 80],
+  ['.services-wrap .section-heading > *', 70],
+  ['.services-grid .service-card', 90],
+  ['.index-left > *', 80],
+  ['.index-rows .index-row', 55],
+  ['.index-footer > *', 80],
+  ['.process-wrap .section-heading > *', 70],
+  ['.process-grid .process-card', 80],
+  ['.process-foot', 0],
+  ['.result-grid .col-head > *', 80],
+  ['.result-grid .col-body > *', 80],
+  ['.studio-wrap .section-heading > *', 70],
+  ['.standard-list .standard-row', 55],
+  ['.contact-inner > *', 80],
+  ['footer .footer-top > *', 70],
+];
+
+const revealIO = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add('in');
+    revealIO.unobserve(e.target);
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+
+REVEAL_GROUPS.forEach(([sel, step]) => {
+  document.querySelectorAll(sel).forEach((el, idx) => {
+    el.classList.add('rv');
+    if (step) el.style.transitionDelay = (idx * step) + 'ms';
+    revealIO.observe(el);
+  });
+});
+
+// imagery gets its own scale-in rather than the rise used for text
+document.querySelectorAll('.index-img, .ba').forEach(el => {
+  el.classList.add('rv-img');
+  revealIO.observe(el);
+});
+
+/* Stats count up once, preserving each label's own prefix, padding and suffix */
+function animateStat(el) {
+  const raw = el.textContent.trim();
+  // the digit group must end on a digit, or a trailing space would be swallowed
+  // and '72 ч' would render as '72ч'
+  const m = raw.match(/^(\D*?)(\d[\d ]*\d|\d)(.*)$/);
+  if (!m) return;
+  const [, pre, digits, suf] = m;
+  const SEP = String.fromCharCode(32);
+  const grouped = digits.indexOf(SEP) !== -1;
+  const target = parseInt(digits.split(SEP).join(''), 10);
+  if (!Number.isFinite(target)) return;
+  const pad = digits.startsWith('0') ? digits.length : 0;
+  const fmt = (n) => {
+    let s = String(n);
+    if (pad) s = s.padStart(pad, '0');
+    if (grouped) s = s.replace(/\B(?=(\d{3})+(?!\d))/g, SEP);
+    return pre + s + suf;
+  };
+  const DUR = 1400, t0 = performance.now();
+  el.textContent = fmt(0);
+  (function tick(now) {
+    const p = Math.min((now - t0) / DUR, 1);
+    const eased = 1 - Math.pow(1 - p, 4);
+    el.textContent = fmt(Math.round(target * eased));
+    if (p < 1) requestAnimationFrame(tick);
+  })(t0);
+}
+
+if (matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+  const statIO = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      animateStat(e.target);
+      statIO.unobserve(e.target);
+    });
+  }, { threshold: 0.6 });
+  document.querySelectorAll('.stat .val').forEach(el => statIO.observe(el));
+}
+
+/* Nav gains a blurred backdrop once the hero starts scrolling away */
+const navEl = document.getElementById('siteNav');
+const onNavScroll = () => navEl.classList.toggle('scrolled', window.scrollY > 24);
+window.addEventListener('scroll', onNavScroll, { passive: true });
+onNavScroll();
+
+/* Slider handle reacts while dragging */
+ba.addEventListener('pointerdown', () => ba.classList.add('dragging'));
+window.addEventListener('pointerup', () => ba.classList.remove('dragging'));
 </script>
 </body>
 </html>
