@@ -272,6 +272,11 @@ h1.brand{margin:0;font-family:Outfit,sans-serif;font-weight:200;font-size:clamp(
 .dialog-alt{margin-top:18px;padding-top:16px;border-top:1px solid var(--border-hairline);display:flex;flex-wrap:wrap;gap:6px 16px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;color:var(--slate-grey);}
 .dialog-alt a{color:var(--cold-silver);text-decoration:none;}
 .dialog-alt a:hover{color:var(--off-white);}
+.consent{display:flex;gap:10px;align-items:flex-start;margin:4px 0 16px;font-size:13px;line-height:1.5;color:var(--slate-grey);cursor:pointer;}
+.consent input{margin:2px 0 0;accent-color:var(--signal);flex:none;}
+.consent a{color:var(--cold-silver);}
+.footer-bottom a{color:var(--slate-grey);text-decoration:none;}
+.footer-bottom a:hover{color:var(--off-white);}
 
 /* Section heading component */
 .section-heading{display:flex;flex-direction:column;gap:14px;max-width:760px;}
@@ -616,6 +621,7 @@ body{overflow-wrap:break-word;}
     </div>
     <div class="footer-bottom">
       <span>Только по записи</span>
+      <a href="/privacy">Политика обработки персональных данных</a>
       <span>SHIRON / 2018—2026</span>
     </div>
   </div>
@@ -629,6 +635,10 @@ body{overflow-wrap:break-word;}
       <div class="field"><label>Имя</label><input type="text" name="name" required></div>
       <div class="field"><label>Автомобиль</label><input type="text" name="car" placeholder="Марка, модель, год"></div>
       <div class="field"><label>Комментарий</label><textarea name="comment" rows="3" placeholder="Текущее состояние автомобиля"></textarea></div>
+      <label class="consent">
+        <input type="checkbox" name="consent" required>
+        <span>Согласен с <a href="/privacy" target="_blank" rel="noopener">политикой обработки персональных данных</a></span>
+      </label>
       <button type="submit" class="btn btn-primary" style="width:100%;">Перейти в Telegram</button>
     </form>
     <div class="note">Откроется чат с сообщением — останется нажать «отправить»</div>
