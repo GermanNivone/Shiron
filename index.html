@@ -113,7 +113,7 @@ h1.brand{margin:0;font-family:Outfit,sans-serif;font-weight:200;font-size:clamp(
 .service-img .scrim{position:absolute;inset:0;background-image:var(--scrim-bottom);}
 .service-body{padding:28px;display:flex;flex-direction:column;gap:16px;}
 .service-index{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;color:var(--slate-grey);}
-.service-title{font-family:Outfit,sans-serif;font-weight:300;font-size:26px;letter-spacing:.06em;}
+.service-title{font-family:Outfit,sans-serif;font-weight:300;font-size:clamp(21px,1.7vw,25px);letter-spacing:.04em;}
 .service-desc{font-size:15px;line-height:1.65;color:var(--cold-silver);max-width:34ch;}
 .service-items{border-top:1px solid var(--border-hairline);padding-top:16px;display:flex;flex-direction:column;gap:8px;}
 .service-items div{font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.5;color:var(--cold-silver);}
@@ -205,6 +205,39 @@ footer{padding:clamp(48px,6vw,80px) clamp(20px,4vw,32px) 40px;border-top:1px sol
 .field input,.field textarea{background:var(--onyx-black);border:1px solid var(--steel-grey);border-radius:2px;color:var(--off-white);padding:12px 14px;font-family:Karla,sans-serif;font-size:15px;}
 .field input:focus,.field textarea:focus{outline:none;border-color:var(--signal);}
 .dialog .note{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--slate-grey);margin-top:8px;}
+
+/* ---- Section rhythm ----
+   Every content block gets the same vertical spacing and a hairline top edge,
+   so the page reads as an ordered sequence rather than uneven slabs. */
+.stats-section,
+.two-col,
+.services-section,
+.index-section,
+.process-section,
+.result-section,
+.studio-section,
+.contact-section{
+  padding-top:clamp(64px,10vw,160px);
+  padding-bottom:clamp(64px,10vw,160px);
+  border-top:1px solid var(--border-hairline);
+}
+.stats-section{border-top:none;}
+.contact-section{padding-bottom:clamp(80px,12vw,180px);}
+/* the following section now supplies the edge, so these would double up */
+.index-section,.studio-section{border-bottom:none;}
+/* the section edge replaces the per-column rule, which only spanned one column */
+.col-head,.index-left{border-top:none;}
+
+/* Grid children default to min-width:auto, which lets long content push a
+   column past its track and spill outside the block. */
+.two-col-grid>*,
+.index-grid>*,
+.result-grid>*,
+.services-grid>*,
+.process-grid>*,
+.stats-grid>*{min-width:0;}
+
+body{overflow-wrap:break-word;}
 </style>
 </head>
 <body>
